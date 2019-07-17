@@ -1,5 +1,4 @@
 import React from 'react';
-import LoginProvider from './LoginProvider';
 
 //context consumer
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -9,7 +9,6 @@ import UserProfile from './components/Users/UserProfile';
 import PostsTrending from './components/Posts/PostsTrending';
 
 /** Connexion */
-import LoginProvider from './components//Login/LoginProvider';
 import Login from './components//Login/Login';
 
 /** Register */
