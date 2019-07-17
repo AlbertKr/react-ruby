@@ -36,11 +36,7 @@ class App extends Component {
             </PostProvider>)
             }/>
             <Route path="/connexion" render={() => 
-              (<LoginProvider>
-                <div className="App">
-                    <Login />
-                </div>
-            </LoginProvider>)
+              (<Login/>)
             }/> 
           </Switch>
         </Router>
