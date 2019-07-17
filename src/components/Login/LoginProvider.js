@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MyContext from '../../MyContext';
+import UserContext from '../Users/UserContext';
 
 class LoginProvider extends Component {
 
@@ -83,20 +83,7 @@ class LoginProvider extends Component {
     //     })
     // }
 
-    render() {
-        console.log("render");
-        if( this.state.login !== undefined ){
-            return (
-                <MyContext.Provider>
-                    {this.props.children}
-                </MyContext.Provider>
-            );
-        }else{
-            return (
-                <div>Y'a rien !</div>
-            );
-        }
-    }
+ 
 }
 
 export default LoginProvider;

@@ -3,15 +3,18 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 
 /** Users */
 import UserProvider from './components/Users/UserProvider';
-import UsersList from './components/Users/UsersList';
+import UserProfile from './components/Users/UserProfile';
 
 /** Posts */
-import PostProvider from './components/Posts/PostProvider';
-import PostsList from './components/Posts/PostsList';
+import PostsTrending from './components/Posts/PostsTrending';
 
 /** Connexion */
 import LoginProvider from './components//Login/LoginProvider';
 import Login from './components//Login/Login';
+
+/** Register */
+import RegisterProvider from './components//Register/RegisterProvider';
+import Register from './components//Register/Register';
 
 class App extends Component {
   render() {
@@ -21,22 +24,25 @@ class App extends Component {
             <Route exact path="/">  
               <Redirect to="/connexion" />  
             </Route> 
-            <Route path="/listUsers" render={() => 
+            <Route path="/utilisateur" render={() => 
               (<UserProvider>
                 <div className="App">
-                    <UsersList />
+                    <UserProfile />
                 </div>
             </UserProvider>)
             }/>
             <Route path="/accueil" render={() => 
-              (<PostProvider>
-                <div className="App">
-                    <PostsList />
-                </div>
-            </PostProvider>)
+              (<PostsTrending />)
             }/>
             <Route path="/connexion" render={() => 
               (<Login/>)
+            }/> 
+            <Route path="/inscription" render={() => 
+              (<RegisterProvider>
+                <div className="App">
+                    <Register />
+                </div>
+            </RegisterProvider>)
             }/> 
           </Switch>
         </Router>
