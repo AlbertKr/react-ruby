@@ -1,42 +1,43 @@
 import React, { Component } from 'react';
-import MyContext from '../../MyContext';
+import UserContext from './UserContext';
 
 class UserProvider extends Component {
-    
-    state = {
-        cars: {
-            car001: { name: 'Honda', price: 100 },
-            car002: { name: 'BMW', price: 150 },
-            car003: { name: 'Mercedes', price: 200 }
-        }
-    };
 
     state = {
         users: {
-
+            0: {
+                name: "Alberto",
+                email: "ninegagers@hehe.gag"
+            }
         }
     }
     
-    componentDidMount() {
-      fetch('http://localhost:3001/users')
-        .then(res => res.json())
-        .then((data) => {
-            this.setState({ users: data.data });
-        })
-        .catch(console.log);
-    }
+    // state = {
+    //     users: {
+
+    //     }
+    // }
+
+    // componentDidMount() {
+    //   fetch('http://localhost:3001/users/')
+    //     .then(res => res.json())
+    //     .then((data) => {
+    //         this.setState({ users: data.data });
+    //     })
+    //     .catch(console.log);
+    // }
     
     render() {
-        if( this.state.users.users !== undefined ){
+        if( this.state.users !== undefined ){
             return (
-                <MyContext.Provider
+                <UserContext.Provider
                     value={{
-                        cars: this.state.users.users
+                        user: this.state.users
                         }
                     }
                 >
                     {this.props.children}
-                </MyContext.Provider>
+                </UserContext.Provider>
             );
         }else{
             return (

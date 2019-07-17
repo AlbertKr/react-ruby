@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import UserContext from '../Users/UserContext';
 
-class LoginProvider extends Component {
+class RegisterProvider extends Component {
     
     state = {
-        login : {
+        register : {
 
         }
     };
     
     render() {
         
-        if( this.state.login !== undefined ){
+        if( this.state.register !== undefined ){
             return (
                 <UserContext.Provider
                     value={{
-                        login: this.state.login
+                        register: this.state.register
                         }
                     }
                 >   
@@ -30,4 +30,4 @@ class LoginProvider extends Component {
     }
 }
 
-export default LoginProvider;
+export default RegisterProvider;

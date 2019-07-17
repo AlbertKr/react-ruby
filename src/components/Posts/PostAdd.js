@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import MyContext from '../../MyContext';
 
-class PostProvider extends Component {
+class PostAdd extends Component {
     
     state = {
         posts: {
@@ -29,28 +28,23 @@ class PostProvider extends Component {
         }
     };
     
-    // componentDidMount() {
-    //   fetch('http://localhost:3001/users')
-    //     .then(res => res.json())
-    //     .then((data) => {
-    //         this.setState({ users: data.data });
-    //     })
-    //     .catch(console.log);
-    // }
-
     render() {
         
         if( this.state.posts !== undefined ){
             return (
-                <MyContext.Provider
-                    value={{
-                        posts: this.state.posts
-                        }
-                    }
-                >
-                    {this.props.children}
-                </MyContext.Provider>
-            );
+                <div> Blog : 
+                {Object.keys(this.state.posts).map(carID => (
+                    <div>
+                        <h2>@{this.state.posts[carID].user.pseudo}</h2> 
+                            <p>{this.state.posts[carID].user.email}</p>
+                        <div>
+                            <p> Contenu du Post : </p>
+                            <p>{this.state.posts[carID].content}</p>
+                        </div>
+                    </div>
+                ))}
+                </div>
+            ); 
         }else{
             return (
                 <div>Y'a rien !</div>
@@ -59,4 +53,4 @@ class PostProvider extends Component {
     }
 }
 
-export default PostProvider;
+export default PostAdd;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RegisterPage = () => {  
+const Register = () => {  
     return (  
       <div className="col-md-6 col-md-offset-3">  
                 <h2>Inscription</h2>  
@@ -25,4 +25,4 @@ const RegisterPage = () => {
     );  
   };  
   
-  export default RegisterPage  
+  export default Register

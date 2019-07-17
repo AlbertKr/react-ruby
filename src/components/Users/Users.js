@@ -1,26 +1,20 @@
 import React, { Fragment } from 'react';
-import MyContext from '../../MyContext';
+import UserContext from './UserContext';
+import './UserStyle.css';
 
 const Users = () => (
     
-    <MyContext.Consumer>
+    <UserContext.Consumer>
         {context => (
             <Fragment>
-                {Object.keys(context.cars).map(carID => (
-                    <div>
-                        <div>
-                            <p> Email : </p>
-                            <p>{context.cars[carID].email}</p>
-                        </div>
-                        <div>
-                            <p> Mot de passe : </p>
-                            <p>{context.cars[carID].password}</p>
-                        </div>
+                {Object.keys(context.user).map(key => (
+                    <div className="header-user">
+                        <p> {context.user[key].email}, known as : {context.user[key].name} </p>
                     </div>
                 ))}
             </Fragment>
         )}
-    </MyContext.Consumer>
+    </UserContext.Consumer>
 );
 
 export default Users;
