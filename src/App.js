@@ -35,11 +35,7 @@ class App extends Component {
               (<PostsTrending />)
             }/>
             <Route path="/connexion" render={() => 
-              (<LoginProvider>
-                <div className="App">
-                    <Login />
-                </div>
-            </LoginProvider>)
+              (<Login/>)
             }/> 
             <Route path="/inscription" render={() => 
               (<RegisterProvider>
