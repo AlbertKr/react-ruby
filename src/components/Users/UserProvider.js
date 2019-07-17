@@ -25,10 +25,8 @@ class UserProvider extends Component {
         })
         .catch(console.log);
     }
+    
     render() {
-        console.log(this.state);
-        console.log(this.state.users);
-        console.log(this.state.users.users);
         if( this.state.users.users !== undefined ){
             return (
                 <MyContext.Provider

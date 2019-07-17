@@ -1,7 +1,8 @@
-import React from 'react';  
-const LoginPage = ({  classes }) => {  
-    return (  
-      <div className="col-md-6 col-md-offset-3">  
+import React from 'react';
+
+const Login = () => {
+    
+      return (<div className="col-md-6 col-md-offset-3">  
                 <h2>Connexion</h2>  
                 <form name="form">  
                     <div className="form-group" >  
@@ -16,8 +17,8 @@ const LoginPage = ({  classes }) => {
                         <button type="submit" className="btn btn-primary">Connexion</button>  
                     </div>  
                 </form>  
-            </div>  
-    );  
+            </div> 
+      )
   };  
   
-  export default LoginPage  
+  export default Login  

@@ -10,7 +10,8 @@ import PostProvider from './components/Posts/PostProvider';
 import PostsList from './components/Posts/PostsList';
 
 /** Connexion */
-import LoginPage from './components/LoginPage';
+import LoginProvider from './components//Login/LoginProvider';
+import Login from './components//Login/Login';
 
 class App extends Component {
   render() {
@@ -34,7 +35,13 @@ class App extends Component {
                 </div>
             </PostProvider>)
             }/>
-            <LoginPage path="/connexion"/>  
+            <Route path="/connexion" render={() => 
+              (<LoginProvider>
+                <div className="App">
+                    <Login />
+                </div>
+            </LoginProvider>)
+            }/> 
           </Switch>
         </Router>
       );
