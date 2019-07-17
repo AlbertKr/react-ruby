@@ -1,4 +1,6 @@
 import React from 'react';
+import { BrowserRouter as Redirect } from 'react-router-dom';
+
 
 //context consumer
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -9,14 +11,13 @@ class Login extends React.Component {
         login: {
             email: {},
             password: {}
-        }
+        },
+        redirect: false
 
     };
 
 
     formSubmitted = e => {
-        console.log(this.state.login.email);
-        console.log(this.state.login.password);
         // this.setState({isLoadingDisplayed: true});
         e.preventDefault();
 
@@ -32,19 +33,24 @@ class Login extends React.Component {
                 password: this.state.login.password,
             })
         })
+            .then(() => this.setState({ redirect: true }))
 
-            .then(res => res.json())
             
             .catch(err => console.error('Caught error: ', err));
-        console.log(this.state);
 
 
 
     };
 
+// <Redirect
+// to={{
+//     pathname: "/accueil",
+//     state: { resultat: res.json() }
+// }}
+// />
+
     inputValueChanged = e => {
 
-        console.log("inputValueChanged");
         const {name, value} = e.target;
         this.setState(prevState => ({
             login: {
@@ -58,6 +64,12 @@ class Login extends React.Component {
 
 
         render(){
+
+            const { redirect } = this.state;
+            if (redirect) {
+                console.log("aze");
+                return <Redirect to='/accueil'/>;
+            }
             return (
                 <div className="col-md-6 col-md-offset-3">
                     <h2>Connexion</h2>
