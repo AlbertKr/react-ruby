@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
+/** Users */
 import UserProvider from './components/Users/UserProvider';
 import UsersList from './components/Users/UsersList';
+
+/** Posts */
+import PostProvider from './components/Posts/PostProvider';
+import PostsList from './components/Posts/PostsList';
+
+/** Connexion */
 import LoginPage from './components/LoginPage';
 
 class App extends Component {
@@ -18,6 +26,13 @@ class App extends Component {
                     <UsersList />
                 </div>
             </UserProvider>)
+            }/>
+            <Route path="/accueil" render={() => 
+              (<PostProvider>
+                <div className="App">
+                    <PostsList />
+                </div>
+            </PostProvider>)
             }/>
             <LoginPage path="/connexion"/>  
           </Switch>
