@@ -42,7 +42,7 @@ class PostsTrending extends Component {
         })
             .then(res => res.json())
             .then((data) => {
-                this.setState({ articles: data });
+                this.setState({ articles: data.articles });
             })
             .then(() => this.setState({redirect: true}))
             .catch(err => console.error('Caught error: ', err));
@@ -50,21 +50,20 @@ class PostsTrending extends Component {
 
 
     render() {
-
         if( this.state.articles !== undefined ){
-            console.log(this.state.articles);
-            console.log(Object.keys(this.state.articles));
-            console.log(this.state.articles.articles);
             return (
                 <div> Blog :
-                    {this.state.map(carID => (
-                        // {Object.keys(this.state.articles).map(carID => (
+                         {Object.keys(this.state.articles).map(carID => (
                     <div>
-                        {/*<h2>@{this.state.articles[carID].user.pseudo}</h2> */}
+                        <h2>{this.state.articles[carID].title}</h2>
                             {/*<p>{this.state.articles[carID].user.email}</p>*/}
                         <div>
                             <p> Contenu de l'article : </p>
                             <p>{this.state.articles[carID].content}</p>
+
+
+                            <img src={ require("../../img/" + this.state.articles[carID].image)}/>
+                        }
                         </div>
                     </div>
                 ))}
