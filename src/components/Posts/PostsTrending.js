@@ -4,12 +4,10 @@ class PostsTrending extends Component {
 
     state = {
         articles: []
-
-
     };
 
     componentDidMount() {
-        fetch('http://localhost:3002/articles', {
+        fetch('http://localhost:3002/api/v1/articles', {
             method: 'GET',
             headers: {
                 'Content-Type': "application/json"
@@ -17,7 +15,8 @@ class PostsTrending extends Component {
         })
             .then(res => res.json())
             .then((data) => {
-                this.setState({ articles: data.articles });
+                console.log(data)
+                this.setState({ articles: data });
             })
             .then(() => this.setState({redirect: true}))
             .catch(err => console.error('Caught error: ', err));
@@ -38,7 +37,11 @@ class PostsTrending extends Component {
     }
 
     render() {
+
         if( this.state.articles !== undefined ){
+            console.log(this.state.articles);
+            console.log(Object.keys(this.state.articles));
+            console.log(this.state.articles.articles);
             return (
                 <div> Blog :
 
@@ -47,10 +50,14 @@ class PostsTrending extends Component {
                         <h2>{this.state.articles[carID].title}</h2>
                             {/*<p>{this.state.articles[carID].user.email}</p>*/}
                         <div>
-                            <p>{this.state.articles[carID].content}</p>
-
+                            <p> {this.state.articles[carID].content}</p>
+                            <p>     publié par {this.state.articles[carID].user.name} le {this.state.articles[carID].date} </p>
+                            <p>___________</p>
+                         <button onClick={() => this.handleDelete(this.state.articles[carID].id)}> Supprimer l'article </button>
                         </div>
-                        <button onClick={() => this.handleDelete(this.state.articles[carID].id)}> Supprimer l'article </button>
+
+                        
+
                     </div>
                 ))}
                 </div>
