@@ -2,54 +2,54 @@ import React, { Component } from 'react';
 
 class PostsTrending extends Component {
 
-    state = {
-        articles: {
-            article1: {
-                user: {
-                    email: 'albert.test@gg.com',
-                    pseudo: 'Alberto'
-                },
-                content: "J'ai finis le React !",
-                id: 1
-            },
-            article2: {
-                user: {
-                    email: 'joris.test@gg.com',
-                    pseudo: 'Jojo'
-                },
-                content: "J'ai finis le Ruby !",
-                id: 2
-            },
-            article3: {
-                user: {
-                    email: 'louis.test@gg.com',
-                    pseudo: 'Loulou'
-                },
-                content: "J'ai finis le Node !",
-                id: 3
-            }
-        }
-    };
     // state = {
-    //     articles: []
-
-
-    // };
-
-    // componentDidMount() {
-    //     fetch('http://localhost:3001/articles', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': "application/json"
+    //     articles: {
+    //         article1: {
+    //             user: {
+    //                 email: 'albert.test@gg.com',
+    //                 pseudo: 'Alberto'
+    //             },
+    //             content: "J'ai finis le React !",
+    //             id: 1
+    //         },
+    //         article2: {
+    //             user: {
+    //                 email: 'joris.test@gg.com',
+    //                 pseudo: 'Jojo'
+    //             },
+    //             content: "J'ai finis le Ruby !",
+    //             id: 2
+    //         },
+    //         article3: {
+    //             user: {
+    //                 email: 'louis.test@gg.com',
+    //                 pseudo: 'Loulou'
+    //             },
+    //             content: "J'ai finis le Node !",
+    //             id: 3
     //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then((data) => {
-    //             this.setState({ articles: data.articles });
-    //         })
-    //         .then(() => this.setState({redirect: true}))
-    //         .catch(err => console.error('Caught error: ', err));
+    //     }
     // };
+    state = {
+        articles: []
+
+
+    };
+
+    componentDidMount() {
+        fetch('http://localhost:3001/articles', {
+            method: 'GET',
+            headers: {
+                'Content-Type': "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({ articles: data.articles });
+            })
+            .then(() => this.setState({redirect: true}))
+            .catch(err => console.error('Caught error: ', err));
+    };
 
     handleDelete(id_article){
         fetch('http://localhost:3001/articles/delete', {
