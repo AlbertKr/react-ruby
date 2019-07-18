@@ -27,7 +27,6 @@ class Login extends React.Component {
         })
             .then(res =>{
                 res.json().then(function(defs){
-                    console.log(defs)
                     localStorage.setItem("email",defs.email)
                     localStorage.setItem("name",defs.name)
                     localStorage.setItem("id",defs.id)
@@ -55,7 +54,6 @@ class Login extends React.Component {
 
         const { redirect } = this.state;
         if (redirect) {
-            console.log("aze");
             return <Redirect to='/accueil' />;
         }
         return (
