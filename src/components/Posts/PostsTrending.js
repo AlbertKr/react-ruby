@@ -2,42 +2,12 @@ import React, { Component } from 'react';
 
 class PostsTrending extends Component {
 
-    // state = {
-    //     articles: {
-    //         article1: {
-    //             user: {
-    //                 email: 'albert.test@gg.com',
-    //                 pseudo: 'Alberto'
-    //             },
-    //             content: "J'ai finis le React !",
-    //             id: 1
-    //         },
-    //         article2: {
-    //             user: {
-    //                 email: 'joris.test@gg.com',
-    //                 pseudo: 'Jojo'
-    //             },
-    //             content: "J'ai finis le Ruby !",
-    //             id: 2
-    //         },
-    //         article3: {
-    //             user: {
-    //                 email: 'louis.test@gg.com',
-    //                 pseudo: 'Loulou'
-    //             },
-    //             content: "J'ai finis le Node !",
-    //             id: 3
-    //         }
-    //     }
-    // };
     state = {
         articles: []
-
-
     };
 
     componentDidMount() {
-        fetch('http://localhost:3001/articles', {
+        fetch('http://localhost:3002/api/v1/articles', {
             method: 'GET',
             headers: {
                 'Content-Type': "application/json"
@@ -45,14 +15,15 @@ class PostsTrending extends Component {
         })
             .then(res => res.json())
             .then((data) => {
-                this.setState({ articles: data.articles });
+                console.log(data)
+                this.setState({ articles: data });
             })
             .then(() => this.setState({redirect: true}))
             .catch(err => console.error('Caught error: ', err));
     };
 
     handleDelete(id_article){
-        fetch('http://localhost:3001/articles/delete', {
+        fetch('http://localhost:3002/articles/delete', {
             method: 'POST',
             headers: {
                 'Content-Type': "application/json"
@@ -66,19 +37,27 @@ class PostsTrending extends Component {
     }
 
     render() {
+
         if( this.state.articles !== undefined ){
+            console.log(this.state.articles);
+            console.log(Object.keys(this.state.articles));
+            console.log(this.state.articles.articles);
             return (
                 <div> Blog :
+
                          {Object.keys(this.state.articles).map(carID => (
                     <div>
                         <h2>{this.state.articles[carID].title}</h2>
                             {/*<p>{this.state.articles[carID].user.email}</p>*/}
                         <div>
-                            <p> Contenu de l'article : </p>
-                            <p>{this.state.articles[carID].content}</p>
-                            {/* <img src={ require("../../img/" + this.state.articles[carID].image)}/> */}
+                            <p> {this.state.articles[carID].content}</p>
+                            <p>     publié par {this.state.articles[carID].user.name} le {this.state.articles[carID].date} </p>
+                            <p>___________</p>
+                         <button onClick={() => this.handleDelete(this.state.articles[carID].id)}> Supprimer l'article </button>
                         </div>
-                        <button onClick={() => this.handleDelete(this.state.articles[carID].id)}> Supprimer l'article </button>
+
+                        
+
                     </div>
                 ))}
                 </div>
