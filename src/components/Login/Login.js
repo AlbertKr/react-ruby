@@ -15,7 +15,7 @@ class Login extends React.Component {
         // this.setState({isLoadingDisplayed: true});
         e.preventDefault();
 
-        fetch('http://localhost:3001/users/authenticate', {
+        fetch('http://localhost:3002/api/v1/users/authenticate', {
             method: 'POST',
             headers: {
                 'Content-Type': "application/json"
@@ -25,7 +25,18 @@ class Login extends React.Component {
                 password: this.state.login.password,
             })
         })
-            .then(() => this.setState({ redirect: true }))
+            .then(res =>{
+                res.json().then(function(defs){
+                    console.log(defs)
+                    localStorage.setItem("email",defs.email)
+                    localStorage.setItem("name",defs.name)
+                    localStorage.setItem("id",defs.id)
+
+                });
+            }  )
+            .then(() => {
+                this.setState({ redirect: true })
+            })
             .catch(err => console.error('Caught error: ', err));
     };
 
