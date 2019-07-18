@@ -22,6 +22,19 @@ class PostsTrending extends Component {
             .catch(err => console.error('Caught error: ', err));
     };
 
+    handleDelete(id_article){
+        fetch('http://localhost:3002/articles/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({
+                id_article: id_article
+            })
+        })
+            .then(() => this.setState({ redirect: true }))
+            .catch(err => console.error('Caught error: ', err));
+    }
 
     render() {
 
@@ -40,8 +53,11 @@ class PostsTrending extends Component {
                             <p> {this.state.articles[carID].content}</p>
                             <p>     publié par {this.state.articles[carID].user.name} le {this.state.articles[carID].date} </p>
                             <p>___________</p>
+                         <button onClick={() => this.handleDelete(this.state.articles[carID].id)}> Supprimer l'article </button>
                         </div>
+
                         
+
                     </div>
                 ))}
                 </div>
