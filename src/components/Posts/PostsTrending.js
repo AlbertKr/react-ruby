@@ -2,31 +2,6 @@ import React, { Component } from 'react';
 
 class PostsTrending extends Component {
 
-    // state = {
-    //     articles: {
-    //         article1: {
-    //             user: {
-    //                 email: 'albert.test@gg.com',
-    //                 pseudo: 'Alberto'
-    //             },
-    //             content: "J'ai finis le React !"
-    //         },
-    //         article2: {
-    //             user: {
-    //                 email: 'joris.test@gg.com',
-    //                 pseudo: 'Jojo'
-    //             },
-    //             content: "J'ai finis le Ruby !"
-    //         },
-    //         article3: {
-    //             user: {
-    //                 email: 'louis.test@gg.com',
-    //                 pseudo: 'Loulou'
-    //             },
-    //             content: "J'ai finis le Node !"
-    //         }
-    //     }
-    // };
     state = {
         articles: []
     };
