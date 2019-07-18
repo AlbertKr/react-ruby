@@ -19,6 +19,7 @@ class App extends Component {
     render() {
         return (
             <Router>
+            <div>coucou</div>
                 <Switch>
                     <Route exact path="/">
                         <Redirect to="/connexion"/>
