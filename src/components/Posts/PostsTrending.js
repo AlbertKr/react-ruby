@@ -34,7 +34,7 @@ class PostsTrending extends Component {
     };
 
     componentDidMount() {
-        fetch('http://localhost:3001/articles', {
+        fetch('http://localhost:3002/articles', {
             method: 'GET',
             headers: {
                 'Content-Type': "application/json"
@@ -57,8 +57,8 @@ class PostsTrending extends Component {
             console.log(this.state.articles.articles);
             return (
                 <div> Blog :
-                    {this.state.map(carID => (
-                        // {Object.keys(this.state.articles).map(carID => (
+                     {//this.state.map(carID => ({
+                         Object.keys(this.state.articles).map(carID => (
                     <div>
                         {/*<h2>@{this.state.articles[carID].user.pseudo}</h2> */}
                             {/*<p>{this.state.articles[carID].user.email}</p>*/}
