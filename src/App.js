@@ -13,7 +13,6 @@ import PostsAdd from './components/Posts/PostAdd';
 import Login from './components//Login/Login';
 
 /** Register */
-import RegisterProvider from './components//Register/RegisterProvider';
 import Register from './components//Register/Register';
 
 class App extends Component {
@@ -41,11 +40,7 @@ class App extends Component {
                         (<Login/>)
                     }/>
                     <Route path="/inscription" render={() =>
-                        (<RegisterProvider>
-                            <div className="App">
-                                <Register/>
-                            </div>
-                        </RegisterProvider>)
+                        (<Register/>)
                     }/>
                 </Switch>
             </Router>
