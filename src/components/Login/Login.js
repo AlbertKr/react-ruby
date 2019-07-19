@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { BrowserRouter as Redirect } from 'react-router-dom';
+import {browserHistory} from "react-router";
 
 class Login extends React.Component {
     state = {
@@ -10,6 +12,8 @@ class Login extends React.Component {
         redirect: false
 
     };
+
+    
 
     formSubmitted = e => {
         // this.setState({isLoadingDisplayed: true});
@@ -55,10 +59,20 @@ class Login extends React.Component {
 
         const { redirect } = this.state;
         if (redirect) {
-            console.log("aze");
-            return <Redirect to='/accueil' />;
+            //this.props.history.p
+            
+            window.location.replace("http://localhost:3001/accueil");
+
+            //this.props.history.push('http://localhost:3001/accueil');
+            //return <Redirect to='localhost:3002/accueil' />;
         }
         return (
+            <section class="ftco-section contact-section">
+      
+      <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+          <div class="col-md-12 mb-4">
+        
             <div className="col-md-6 col-md-offset-3">
                 <h2>Connexion</h2>
                 <form name="form" method="POST" onSubmit={this.formSubmitted}>
@@ -76,6 +90,12 @@ class Login extends React.Component {
                     </div>
                 </form>
             </div>
+
+            </div>
+            </div>
+            </div>
+            </section>
+
         );
     }
 
