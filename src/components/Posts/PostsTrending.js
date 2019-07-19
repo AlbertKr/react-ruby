@@ -38,9 +38,9 @@ class PostsTrending extends Component {
     render() {
 
         if( this.state.articles !== undefined ){
-            console.log(this.state.articles);
-            console.log(Object.keys(this.state.articles));
-            console.log(this.state.articles.articles);
+
+     
+
             return (
                 <section class="ftco-section">
                 <div class="container">
@@ -54,16 +54,20 @@ class PostsTrending extends Component {
                 
 
                          {Object.keys(this.state.articles).map(carID => (
+
                     <div>
                         <h2>{this.state.articles[carID].title}</h2>
                             {/*<p>{this.state.articles[carID].user.email}</p>*/}
                         <div>
                             <p> {this.state.articles[carID].content}</p>
-                            <p>     publié par {this.state.articles[carID].user.name} le {this.state.articles[carID].date} </p>
-                         <button className="mt-2 btn btn-white submit" onClick={() => this.handleDelete(this.state.articles[carID].id)}> Supprimer l'article </button>
+                            <p> publié par {this.state.articles[carID].user.name} le {this.state.articles[carID].date.substring(0, 10)}  </p>
+                            <p>
+                            <button className="mt-2 btn btn-white submit" onClick={() => this.handleDelete(this.state.articles[carID].id)}>Supprimer l'article </button>
+                            </p>
                             <br>
                             </br>
 
+                            <div className="separateur" >_______________</div> 
                         </div>
                     </div>
                 ))}

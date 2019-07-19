@@ -89,7 +89,9 @@ class Login extends React.Component {
                         <button type="submit" className="btn btn-primary">Connexion</button>
                     </div>
                 </form>
+                
             </div>
+            <p> <a href="http://localhost:3001/inscription" >Je n'ai pas de compte</a> </p>
 
             </div>
             </div>
